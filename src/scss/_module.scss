@@ -1,0 +1,363 @@
+//  色変数
+$acc:#297EDB;
+$main:#297EDB;
+$wo:#CF2626;
+$man:#297EDB;
+$hover:#83C9FE;
+$modal:#F0F6FC;
+$wh:#FFF;
+$blk:#373737;
+$base:#EDEDED;
+$active:#EDEDED;
+$gray:#979797;
+
+/*mixin*/
+@mixin button {
+  border-radius: 3px;
+  background-color: $main;
+  height: 35px;
+  color: $wh;
+  padding: 0 27px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  transition: all .2s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,.3);
+  cursor: pointer;
+  &:hover{
+    box-shadow: 0 5px 4px rgba(0,0,0,.4);
+  }
+}
+@mixin module{
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  box-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+@mixin item-inner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*/mixin*/
+.basic-txt{
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+
+/*backghroud*/
+.content-fluid{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $base;
+}
+/*/backghroud*/
+/*header*/
+  .header-fixed-top{
+    position: fixed;
+    top:0;
+  }
+  .header-fixed-second{
+    position: fixed;
+    top:50px;
+  }
+
+  .header-module{
+    background-color: $wh;
+    height:50px;
+    color: $gray;
+    &:nth-child(2n){
+      border-top: 1px solid $gray;
+    }
+  }
+  /*nav*/
+    .navbar-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      @extend .basic-txt;
+    }
+    .nav-fixed-bottom{
+      position: fixed;
+      top: 53px;
+    }
+    /*nav-primary*/
+      .nav-container{
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .project-nav{
+        height: 100%;
+        a{
+          @extend .basic-txt;
+          padding:18px 15px 12px;
+          height: 50px;
+          display: inline-block;
+          box-sizing: border-box;
+          cursor: pointer;
+        }
+        a.is-active{
+          color: $acc;
+          font-weight: bold;
+          border-bottom: 2px solid  $acc;
+        }
+      }
+      .btn-container{
+        padding-top: 18px;
+      }
+    /*/nav-primary*/
+    .user{
+      height: 100%;
+      display: flex;
+      align-items: center;
+      .dropdown-toggle{
+        padding-right: 10px;
+      }
+      cursor: pointer;
+      .icon--triangle:before{
+        position: absolute;
+        font-size: 10px;
+      }
+    }
+
+  /*/nav*/
+/*/header*/
+
+
+
+
+/*button*/
+.btn-primary{
+  @include button
+}
+
+/*/button*/
+
+/*データヘッダー*/
+.project-col{
+  padding: 133px 38px 0;
+}
+.project-head{
+  @include module
+  background-color: $wh;
+  height: 65px;
+  border-bottom: 1px solid $base;
+  border-radius:4px 4px 0 0;
+  margin:0 5px;
+  .project-subheading{
+    @extend .basic-txt;
+    box-sizing: border-box;
+    color:$gray;
+    height: 100%;
+    padding: 0 15px;
+    position: relative;
+    display: flex;
+    justify-content:flex-start;
+    .icon--arrow--up:before{
+      display: block;
+      transform: rotate(0deg);
+      padding-left: 0.5em;
+    }
+  }
+  .project-subheading.is-active{
+    color: $blk;
+  }
+  .project-subheading.is-active.is-reverce{
+    .icon--arrow--up:before{
+      transform: rotate(180deg);
+    }
+  }
+}
+.project-menu{
+  @include item-inner
+  padding: 0 15px;
+  &:first-child{
+    .project-subheading{
+      padding:0 15px;
+    }
+  }
+}
+
+
+
+/*/データヘッダー*/
+.project-id{width: 80px;}
+.project-crest{
+  width: 76px;
+  text-align: right;
+}
+.project-family{width: 120px;}
+.project-protagonist{width: 200px;}
+.project-people{width: 100px;}
+.project-author{width: 150px;}
+.project-subheading.project-people{
+  letter-spacing: 0em;
+}
+
+.project-dl{
+  font-weight: normal;
+  color:$gray;
+  letter-spacing: -0.01em;
+}
+
+
+/*.project-item*/
+.project-item-col{
+  width: 100%;
+  height: 90%;
+  padding: 0;
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
+.project-item{
+  @include module
+  width: 100%;
+  margin:0 5px;
+  height: 80px;
+  z-index: 10;
+  background-color: $wh;
+  padding:0 15px;
+  transition: all  .2s;
+  border-bottom: 1px solid $base;
+  &:last-child{
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom:4px;
+  }
+  &:hover{
+    margin: 0;
+    height: 90px;
+    padding: 0 15px;
+    border:3px solid $hover;
+    z-index: 11
+  }
+  .project-item-menu:last-child{
+    height: 40px;
+    border-left: 2px solid $gray;
+    padding-left: 15px;
+  }
+}
+/*登録データモジュールの左メニュー*/
+.crest-form{
+  width: 54px;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  img{
+    width: 50px;
+    height: 50px;
+    margin: auto;
+  }
+  &:hover{
+    width: 54px;
+    height: 54px;
+    box-sizing: border-box;
+    border: 2px solid $hover;
+    z-index: 11;
+    border-radius: 4px;
+  }
+}
+
+/*/登録データモジュールの左メニュー*/
+
+
+/*登録データモジュールの右メニュー*/
+.project-item-menu{
+  @include item-inner
+    .project-data{
+      box-sizing: border-box;
+      padding:0 18px;
+  }
+  .project-dl{
+    font-weight: bold;
+    &:hover{
+      color:$hover;
+    }
+  }
+}
+.project-subheading.project-people{
+  font-weight: 600;
+}
+.project-id,.project-people{
+  font-weight: normal;
+  letter-spacing: -0.01em;
+}
+.project-data{
+  i:before{
+    font-size: 22px;
+  }
+  &:hover{
+    i:before{
+      color:$hover;
+    }
+  }
+}
+/*/登録データモジュールの右メニュー*/
+/*/.project-item*/
+
+/*####*/
+
+.secondary-nav-menu{
+  @include item-inner;
+  justify-content: flex-end;
+}
+.secondary-nav-function{
+  padding: 0 15px;
+  &:last-child{
+    padding-right: 0;
+  }
+  .btn-primary{
+    padding-top: 0;
+  }
+  .icon--trash:before{
+    font-size: 28px;
+  }
+}
+.secondary-nav-function{
+  color:$gray;
+  *{
+    cursor: pointer;
+  }
+  .function-module{
+      &:hover{
+      color: $hover;
+      i.icon--plus:before,i.icon--trash:before{
+        color: $hover;
+      }
+    }
+    i.icon--plus:before{
+      padding-right: 7px;
+    }
+  }
+}
+.secondary-crest{
+  display: flex;
+  align-items: center;
+  .crest-form{
+      width: 35px;
+      height: 35px;
+      overflow: hidden;
+      img{
+        width: 100%;
+        height: 100%;;
+    }
+  }
+  span{
+    color:$blk;
+    padding-left: 0.8em;
+  }
+}
+
+/*/####*/
+/*####*/
+/*/####*/
